@@ -1,0 +1,51 @@
+digraph str_obj {
+    rankdir = LR;
+    node [shape=record, fontname="monaco"];
+    edge [fontname="monaco"];
+
+    //str_obj [label=<
+        //<table border="0" cellborder="1" cellspacing="0" cellpadding="4">
+            //<tr>
+                //<td rowspan="4"> ob_refcnt </td>
+            //</tr>
+            //<tr>
+                //<td rowspan="4"> ob_type </td>
+            //</tr>
+            //<tr>
+                //<td rowspan="4"> ob_size: 6 </td>
+            //</tr>
+            //<tr>
+                //<td rowspan="4"> ob_hash: -1 </td>
+            //</tr>
+            //<tr>
+                //<td rowspan="4"> ob_ssate: 0 </td>
+            //</tr>
+            //<tr>
+                //<td> P </td>
+                //<td> y </td>
+                //<td> t </td>
+                //<td> h </td>
+            //</tr>
+            //<tr>
+                //<td> o </td>
+                //<td> n </td>
+                //<td> \0 </td>
+                //<td>   </td>
+            //</tr>
+        //</table>
+        //>];
+    str_obj [label="<f1> ob_refcnt | <f2> ob_type | <f3> ob_size: 7 | <f4> ob_hash: -1 | <f5> ob_ssate: 0 | {k | e | y | w} | {o | r | d | \\0}"];
+    str_type [label="<f1> ob_refcnt | <f2> ob_type | <f3> ob_size | <f4> tp_dealloc | <f5> tp_as_number | <f6> tp_as_sequence | <f7> tp_as_maping | <f8> tp_hash | <f7> tp_new | <f8> ..."];
+    type_type [label="<f1> ob_refcnt | <f2> ob_type | <f3> ob_size | <f4> ..."];
+    //int_as_number [label="<f1> int_add | <f2> int_sub | <f3> int_mul | <f4> int_classic_div | <f5> int_mod | <f6> ..."];
+
+    variable -> str_obj:f1;
+    str_obj:f2 -> str_type:f1;
+    str_type:f2 -> type_type:f1;
+    //int_type:f4 -> int_dealloc:w;
+    //int_type:f5 -> int_as_number:f1;
+    //int_type:f6 -> int_hash;
+    //int_type:f7 -> int_new;
+    type_type:f2:e -> type_type:f1:e;
+}
+

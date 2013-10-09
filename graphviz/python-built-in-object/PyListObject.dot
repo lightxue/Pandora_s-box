@@ -1,0 +1,33 @@
+digraph int_obj {
+    rankdir = LR;
+    node [shape=record, fontname="monaco"];
+    edge [fontname="monaco"];
+
+    list_obj [label="<f1> ob_refcnt | <f2> ob_type | <f3> ob_size: 3 | <f4> ob_item | <f5> allocated: 4"];
+    list_type [label="<f1> ob_refcnt | <f2> ob_type | <f3> ob_size | <f4> tp_dealloc | <f5> tp_as_sequence | <f6> tp_as_maping | <f7> tp_hash | <f8> tp_new | <f9> ..."];
+    type_type [label="<f1> ob_refcnt | <f2> ob_type | <f3> ob_size | <f4> ..."];
+    list_items [label="<f1> PyObject * | <f2> PyObject * | <f3> PyObject * | <f4> NULL"];
+    int_obj0 [label="<f1> ob_refcnt | <f2> ob_type | <f3> ob_ival"];
+    int_obj1 [label="<f1> ob_refcnt | <f2> ob_type | <f3> ob_ival"];
+    int_obj2 [label="<f1> ob_refcnt | <f2> ob_type | <f3> ob_ival"];
+    int_type [label="<f1> ob_refcnt | <f2> ob_type | <f3> ob_size | <f4> tp_dealloc | <f5> tp_as_number | <f6> tp_hash | <f7> tp_new | <f8> ..."];
+
+    variable -> list_obj:f1;
+    list_obj:f2 -> list_type:f1;
+    list_type:f2 -> type_type:f1;
+
+    list_obj:f4 -> list_items:f1;
+
+    list_items:f1 -> int_obj0:f1;
+    list_items:f2 -> int_obj1:f1;
+    list_items:f3 -> int_obj2:f1;
+
+    int_obj0:f2 -> int_type:f1;
+    int_obj1:f2 -> int_type:f1;
+    int_obj2:f2 -> int_type:f1;
+
+    int_type:f2 -> type_type:f1;
+
+    type_type:f2:e -> type_type:f1:e;
+}
+

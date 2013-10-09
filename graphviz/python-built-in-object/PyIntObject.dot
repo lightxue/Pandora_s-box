@@ -1,0 +1,20 @@
+digraph int_obj {
+    rankdir = LR;
+    node [shape=record, fontname="monaco"];
+    edge [fontname="monaco"];
+
+    int_obj [label="<f1> ob_refcnt | <f2> ob_type | <f3> ob_ival"];
+    int_type [label="<f1> ob_refcnt | <f2> ob_type | <f3> ob_size | <f4> tp_dealloc | <f5> tp_as_number | <f6> tp_hash | <f7> tp_new | <f8> ..."];
+    type_type [label="<f1> ob_refcnt | <f2> ob_type | <f3> ob_size | <f4> ..."];
+    int_as_number [label="<f1> int_add | <f2> int_sub | <f3> int_mul | <f4> int_classic_div | <f5> int_mod | <f6> ..."];
+
+    variable -> int_obj:f1;
+    int_obj:f2 -> int_type:f1;
+    int_type:f2 -> type_type:f1;
+    int_type:f4 -> int_dealloc:w;
+    int_type:f5 -> int_as_number:f1;
+    int_type:f6 -> int_hash;
+    int_type:f7 -> int_new;
+    type_type:f2:e -> type_type:f1:e;
+}
+

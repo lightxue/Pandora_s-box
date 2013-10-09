@@ -1,0 +1,23 @@
+digraph var_obj {
+    rankdir = LR;
+    node [shape=record, fontname="monaco"];
+    edge [fontname="monaco"];
+
+    //{rank=same; nvar var}
+    //{rank=same; nobj obj}
+
+    //nvar [label="variable", shape=plaintext]
+    //nobj [label="object", shape=plaintext]
+
+    var_a [label="variable name: a"];
+    var_b [label="variable name: b"];
+    obj_int [label="<f1> reference count: 1 | <f2> type: int | <f3> ..."];
+    obj_str [label="<f1> reference count: 1 | <f2> type: str | <f3> ..."];
+
+    //nvar -> var [color=white];
+    //nobj -> obj [color=white];
+    //nvar -> nobj [color=white];
+    var_a:e -> obj_str:f1 [style=dashed];
+    var_a:e -> obj_int:f1;
+    var_b -> obj_str:f1;
+}

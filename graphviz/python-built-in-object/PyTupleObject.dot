@@ -1,0 +1,30 @@
+digraph tuple_obj {
+    rankdir = LR;
+    node [shape=record, fontname="monaco"];
+    edge [fontname="monaco"];
+
+    tuple_obj [label="<f1> ob_refcnt | <f2> ob_type | <f3> ob_size: 3 | <f4> ob_item[0] | <f5> ob_item[1] | <f6> ob_item[2]"];
+    tuple_type [label="<f1> ob_refcnt | <f2> ob_type | <f3> ob_size | <f4> tp_dealloc | <f5> tp_as_sequence | <f6> tp_as_maping | <f7> tp_hash | <f8> tp_new | <f9> ..."];
+    type_type [label="<f1> ob_refcnt | <f2> ob_type | <f3> ob_size | <f4> ..."];
+    int_obj0 [label="<f1> ob_refcnt | <f2> ob_type | <f3> ob_ival"];
+    int_obj1 [label="<f1> ob_refcnt | <f2> ob_type | <f3> ob_ival"];
+    int_obj2 [label="<f1> ob_refcnt | <f2> ob_type | <f3> ob_ival"];
+    int_type [label="<f1> ob_refcnt | <f2> ob_type | <f3> ob_size | <f4> tp_dealloc | <f5> tp_as_number | <f6> tp_hash | <f7> tp_new | <f8> ..."];
+
+    variable -> tuple_obj:f1;
+    tuple_obj:f2 -> tuple_type:f1;
+    tuple_type:f2 -> type_type:f1;
+
+    tuple_obj:f4 -> int_obj0:f1;
+    tuple_obj:f5 -> int_obj1:f1;
+    tuple_obj:f6 -> int_obj2:f1;
+
+    int_obj0:f2 -> int_type:f1;
+    int_obj1:f2 -> int_type:f1;
+    int_obj2:f2 -> int_type:f1;
+
+    int_type:f2 -> type_type:f1;
+
+    type_type:f2:e -> type_type:f1:e;
+}
+

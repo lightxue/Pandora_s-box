@@ -1,0 +1,19 @@
+digraph dict_obj {
+    rankdir = LR;
+    node [shape=record, fontname="monaco"];
+    edge [fontname="monaco"];
+
+    dict_obj [label="<f1> ob_refcnt | <f2> ob_type | <f4> ma_fill | <f5> ma_used\
+                     | <f6> ma_mask | <f7> ma_table | <f8> ma_lookup | <f9>\
+                     \n\nma_smalltable\n\n\n"];
+    dict_type [label="<f1> ob_refcnt | <f2> ob_type | <f3> ob_size | <f4> tp_dealloc | <f5> tp_as_sequence | <f6> tp_as_maping | <f7> tp_hash | <f8> tp_new | <f9> ..."];
+    type_type [label="<f1> ob_refcnt | <f2> ob_type | <f3> ob_size | <f4> ..."];
+    dict_items [label="<f1> PyDictEntry * | PyDictEntry * | PyDictEntry * | PyDictEntry * | ... "]
+
+
+    dict_obj:f2 -> dict_type:f1;
+    dict_type:f2 -> type_type:f1;
+    type_type:f2:e -> type_type:f1:e;
+    dict_obj:f7 -> dict_items:f1;
+}
+

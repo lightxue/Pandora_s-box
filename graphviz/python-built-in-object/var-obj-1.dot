@@ -1,0 +1,12 @@
+digraph var_obj {
+    rankdir = LR;
+    node [shape=record, fontname="monaco"];
+    edge [fontname="monaco"];
+
+    var_a [label="variable name: a"];
+    var_b [label="variable name: b"];
+    obj_str [label="<f1> reference count: 2 | <f2> type: str | <f3> ..."];
+
+    var_a:e -> obj_str:f1;
+    var_b:e -> obj_str:f1;
+}
